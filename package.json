@@ -1,6 +1,6 @@
 {
   "name": "chartjs-plugin-cdzt",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A chartJS plugin for zooming in on line charts. A Clicky Draggy Zoomy Thingy if you will",
   "main": "lib/index.js",
   "scripts": {
