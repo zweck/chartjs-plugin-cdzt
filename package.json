@@ -31,6 +31,7 @@
     "jest": "^24.1.0"
   },
   "dependencies": {
-    "ramda": "^0.26.1"
+    "ramda": "^0.26.1",
+    "rollup": "^1.2.2"
   }
 }
