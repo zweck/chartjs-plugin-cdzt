@@ -36,7 +36,7 @@ const createResetButton = chartInstance => {
   const resetButtonHTMLString = chartInstance.options.resetButton
   let resetButton = createDomNodeFromString(resetButtonHTMLString)
 
-  if (!resetButton) {
+  if (!resetButtonHTMLString) {
     resetButton = document.createElement('BUTTON')
     resetButton.innerText = 'RESET'
   }
@@ -65,6 +65,9 @@ export const sliceData = (data = {}, start, end) => {
 }
 
 export const setWidth = chartInstance => x => {
+  chartInstance._cdzt.dragDiv.style.top = `${chartInstance._cdzt.canvasRect.top}px`
+  chartInstance._cdzt.dragDiv.style.height = `${chartInstance._cdzt.canvasRect.height}px`
+
   if (x > 0) {
     chartInstance._cdzt.dragDiv.style.right = null
     chartInstance._cdzt.dragDiv.style.marginLeft = null

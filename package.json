@@ -5,6 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "npm run build:umd && npm run build:es",
+    "watch": "watch 'npm run prepublish && npm run serve' src",
+    "serve": "http-server",
     "build:umd": "rollup -c",
     "build:es": "babel src/chartjs-cdzt-plugin.js --out-file lib/index.js",
     "test": "jest src/"
@@ -30,10 +32,12 @@
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "babel-jest": "^24.1.0",
+    "http-server": "^0.11.1",
     "jest": "^24.1.0",
     "rollup": "^1.2.2",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-node-resolve": "^4.0.1"
+    "rollup-plugin-node-resolve": "^4.0.1",
+    "watch": "^1.0.2"
   },
   "dependencies": {
     "ramda": "^0.26.1"
