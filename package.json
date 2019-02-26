@@ -6,7 +6,7 @@
   "scripts": {
     "prepublish": "npm run build:umd && npm run build:es",
     "build:umd": "rollup -c",
-    "build:es": "babel src --out-file lib/index.js",
+    "build:es": "babel src/chartjs-cdzt-plugin.js --out-file lib/index.js",
     "test": "jest src/"
   },
   "repository": {
