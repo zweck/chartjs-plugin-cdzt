@@ -1,10 +1,12 @@
 {
   "name": "chartjs-plugin-cdzt",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A chartJS plugin for zooming in on line charts. A Clicky Draggy Zoomy Thingy if you will",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "prepublish": "npm run build:umd && npm run build:es",
+    "prepublish": "webpack",
+    "watch": "watch 'npm run prepublish && npm run serve' src",
+    "serve": "http-server",
     "build:umd": "rollup -c",
     "build:es": "babel src/chartjs-cdzt-plugin.js --out-file lib/index.js",
     "test": "jest src/"
@@ -30,10 +32,11 @@
     "@babel/core": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "babel-jest": "^24.1.0",
+    "babel-loader": "^8.0.6",
+    "http-server": "^0.11.1",
     "jest": "^24.1.0",
-    "rollup": "^1.2.2",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-node-resolve": "^4.0.1"
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {
     "ramda": "^0.26.1"

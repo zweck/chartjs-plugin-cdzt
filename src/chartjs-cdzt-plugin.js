@@ -36,7 +36,7 @@ const createResetButton = chartInstance => {
   const resetButtonHTMLString = chartInstance.options.resetButton
   let resetButton = createDomNodeFromString(resetButtonHTMLString)
 
-  if (!resetButton) {
+  if (!resetButtonHTMLString) {
     resetButton = document.createElement('BUTTON')
     resetButton.innerText = 'RESET'
   }
@@ -65,6 +65,9 @@ export const sliceData = (data = {}, start, end) => {
 }
 
 export const setWidth = chartInstance => x => {
+  chartInstance._cdzt.dragDiv.style.top = `${chartInstance._cdzt.canvasRect.top}px`
+  chartInstance._cdzt.dragDiv.style.height = `${chartInstance._cdzt.canvasRect.height}px`
+
   if (x > 0) {
     chartInstance._cdzt.dragDiv.style.right = null
     chartInstance._cdzt.dragDiv.style.marginLeft = null
@@ -95,7 +98,11 @@ const cdzt = {
     IS_ZOOMABLE = includes(chartInstance.config.type, ZOOMABLE_CHARTS)
 
     if (!IS_ZOOMABLE) return false
-    chartInstance._cdzt.zoom = sliceData
+    chartInstance._cdzt.zoom = pathOr(
+      sliceData,
+      [ 'options', 'cdzt', 'zoom' ],
+      chartInstance
+    )
 
     chartInstance._cdzt.resetZoom = () => {
       chartInstance.data = chartInstance._cdzt.originalData
@@ -172,7 +179,7 @@ const cdzt = {
       ].sort()
 
       if (gt(subtract(end, start), chartInstance._cdzt.zoomTolerance)) {
-        chartInstance.data = chartInstance._cdzt.zoom(chartData, start, end)
+        chartInstance.data = chartInstance._cdzt.zoom(chartData, start, end, chartInstance)
         chartInstance.update()
       }
     }
