@@ -4,12 +4,15 @@
 <head>
 	<title>Logarithmic Line Chart</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-	<script src="../lib/cdzt.js"></script>
+	<script src="../dist/cdzt.js"></script>
 </head>
 
 <body>
 	<div style="width:75%;">
 		<canvas id="canvas"></canvas>
+	</div>
+	<div style="width:75%;">
+		<canvas id="canvas2"></canvas>
 	</div>
 	<button id="randomizeData">Randomize Data</button>
 	<script>
@@ -68,7 +71,9 @@
 
 	window.onload = function() {
 		var ctx = document.getElementById('canvas').getContext('2d');
+		var ctx2 = document.getElementById('canvas2').getContext('2d');
 		window.myLine = new Chart(ctx, config);
+		window.myLine2 = new Chart(ctx2, config);
 	};
 
 	document.getElementById('randomizeData').addEventListener('click', function() {
@@ -80,6 +85,7 @@
 		});
 
 		window.myLine.update();
+		window.myLine2.update();
 	});
 	</script>
 </body>
