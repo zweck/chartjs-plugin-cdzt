@@ -81,16 +81,16 @@
 		window.myLine = new Chart(ctx, config);
 		window.myLine2 = new Chart(ctx2, config);
     window.myLine3 = new Chart(
-        ctx3,
-        R.clone({
-            ...config,
-            options: {
-                ...config.options,
-                cdzt: {
-                    zoom: console.log
-                }
-            }
-        })
+      ctx3,
+      R.clone({
+        ...config,
+        options: {
+          ...config.options,
+          cdzt: {
+            zoom: console.log
+          }
+        }
+      })
     );
 	};
 

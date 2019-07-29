@@ -44,7 +44,7 @@ describe('#cdzt', () => {
         },
         'resetZoom': expect.any(Function),
         'setWidth': expect.any(Function),
-        'zoom': expect.any(Function),
+        'zoom': undefined,
         'zoomTolerance': 0.1
       },
       'config': {
