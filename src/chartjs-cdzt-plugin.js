@@ -1,4 +1,5 @@
 import {
+  path,
   pathOr,
   gt,
   includes,
@@ -98,8 +99,7 @@ const cdzt = {
     IS_ZOOMABLE = includes(chartInstance.config.type, ZOOMABLE_CHARTS)
 
     if (!IS_ZOOMABLE) return false
-    chartInstance._cdzt.zoom = pathOr(
-      sliceData,
+    chartInstance._cdzt.zoom = path(
       [ 'options', 'cdzt', 'zoom' ],
       chartInstance
     )
@@ -178,10 +178,13 @@ const cdzt = {
         chartInstance._cdzt.dragEnd / chartInstance._cdzt.canvasRect.width
       ].sort()
 
-      if (gt(subtract(end, start), chartInstance._cdzt.zoomTolerance)) {
-        chartInstance.data = chartInstance._cdzt.zoom(chartData, start, end, chartInstance)
+      const zoomArgs = [ chartData, start, end, chartInstance ]
+      if (gt(subtract(end, start), chartInstance._cdzt.zoomTolerance) && !chartInstance._cdzt.zoom) {
+        chartInstance.data = sliceData.apply(this, zoomArgs)
         chartInstance.update()
       }
+
+      chartInstance._cdzt.zoom && chartInstance._cdzt.zoom.apply(this, zoomArgs)
     }
 
     removeEventListeners()
