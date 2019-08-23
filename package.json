@@ -2,7 +2,7 @@
   "name": "chartjs-plugin-cdzt",
   "version": "0.3.0",
   "description": "A chartJS plugin for zooming in on line charts. A Clicky Draggy Zoomy Thingy if you will",
-  "main": "dist/index.js",
+  "main": "dist/cdzt.js",
   "scripts": {
     "prepublish": "webpack",
     "watch": "watch 'npm run prepublish && npm run serve' src",
